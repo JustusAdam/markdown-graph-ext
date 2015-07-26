@@ -1,0 +1,3 @@
+[submodule "kramdown-addon/kramdown-source"]
+	path = kramdown-addon/kramdown-source
+	url = git@github.com:gettalong/kramdown.git
