@@ -1,5 +1,5 @@
 module GraphExt
-  class Link
+  class Link < GraphObj
     def initialize(target)
       @target = target
     end

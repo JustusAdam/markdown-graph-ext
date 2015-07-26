@@ -1,5 +1,5 @@
 module GraphExt
-  class Edge
+  class Edge < GraphObj
 
     VALID_OPERATORS = {
       '<-' => :to_left,

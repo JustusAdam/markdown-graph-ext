@@ -6,7 +6,7 @@ class Kramdown::Parser::GraphParser < Kramdown::Parser::Kramdown
   def initialize(source, options)
     super
   #  @span_parsers.unshift(:erb_tags)
-    @span_parsers.unshift(:graph_vertice_tags)
+    @span_parsers.unshift(:graph_vertex_tags)
     @span_parsers.unshift(:graph_edge_tags)
     @span_parsers.unshift(:graph_link_tags)
   end
@@ -23,7 +23,7 @@ class Kramdown::Parser::GraphParser < Kramdown::Parser::Kramdown
   GRAPH_TAG_IDENTIFICATION_STRING = 'v'
   IDENTIFIER_REGEX = '\w+'
 
-  VERTICE_TAG = %r{
+  VERTEX_TAG = %r{
     # -----------------------------------------
     # identifier
     # -----------------------------------------
@@ -114,12 +114,12 @@ class Kramdown::Parser::GraphParser < Kramdown::Parser::Kramdown
 
   SINGLE_OPERATOR_REGEX = /(#{GraphExt::Edge::VALID_OPERATORS.keys.sort_by {|a| a.length }.join '|'})/
 
-  def parse_graph_vertice_tags
+  def parse_graph_vertex_tags
     @src.pos += @src.matched_size
-    match = @src.matched().match VERTICE_TAG
-    @tree.children << Element.new(:graph_vertex, GraphExt::Vertice.new(match[:identifier], match[:content]))
+    match = @src.matched().match VERTEX_TAG
+    @tree.children << Element.new(:graph_vertex, GraphExt::Vertex.new(match[:identifier], match[:content]))
   end
-  define_parser(:graph_vertice_tags, VERTICE_TAG)
+  define_parser(:graph_vertex_tags, VERTEX_TAG)
 
   def parse_graph_edge_tags
     @src.pos += @src.matched_size

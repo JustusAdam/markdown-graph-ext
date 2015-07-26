@@ -3,11 +3,23 @@ require 'kramdown/converter/html'
 
 module GraphExt
   module Converter
-    module Graph
+    module GraphConverter
       def initialize_graphs
-        @root.children.each do |element|
-          ""
+
+        vertices, edges, links = @root.children.reduce [[],[],[]] do |memo, element|
+          if element.is_a? GraphExt::Vertex
+            memo[0] << element
+          elsif element.is_a? GraphExt::Edge
+            memo[1] << element
+          elsif element.is_a? GraphExt::Link
+            memo[2] << element
+          else
+            memo
+          end
         end
+
+        algo = GraphExt::Algorithm::get(:default)
+        @data[:graph_data] = algo(vertices, edges).calc
       end
 
       def graph_initialized
@@ -46,12 +58,12 @@ module GraphExt
 end
 
 class Kramdown::Converter::Html
-  include GraphExt::Converter::Graph
+  include GraphExt::Converter::GraphConverter
   include GraphExt::Converter::HtmlRenderer
 end
 
 
 # class Kramdown::Converter::Pdf
-#   include GraphExt::Converter::Graph
+#   include GraphExt::Converter::GraphConverter
 #   include GraphExt::Converter::PdfRenderer
 # end
