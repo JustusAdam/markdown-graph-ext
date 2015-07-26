@@ -22,13 +22,13 @@ Vertices are made of two components. Identifier and content. Where in theory con
 The proposed syntax is as follows:
 
 ```
-[identifier]: single line content
+v[identifier]: single line content
 ```
 
 or
 
 ```
-[identifier]:
+v[identifier]:
     multi
     line
     content
@@ -100,6 +100,10 @@ a <-> b
 ```
 
 Three edges from a to b, one pointing at a, one pointing at b, one pointing at both.
+
+## Rendering the graph
+
+To render the graph in the document you insert a graph tag `<g|any_node_identifier>`. The full graph containing the node will be rendered in-place as svg (hopefully) or png.
 
 ## Layout
 
