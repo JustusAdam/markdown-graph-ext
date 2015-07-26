@@ -1,12 +1,12 @@
 # Easy graphs in markdown
 
-I've had an idea on how to create Extensible graphs in markdown witha  very simplistic formatting language
+I've had an idea on how to create Extensible graphs in markdown with a very simplistic, and hopefully easy to read, formatting language.
 
 Suggestions for improvements are welcome.
 
 There's no working prototype yet. This is sort of an RFC. I'll start the prototype as soon as I actually have some spare time.
 
-If the prototype is successful, and if it is as nice to use as I imagine it I'll write some sort of proper specification for the language, so that ayone can use it (if they like).
+If the prototype is successful, and if it is as nice to use as I imagine it I'll write some sort of proper specification for the language, so that anyone can use it (if they like).
 
 ## General Idea
 
@@ -55,6 +55,8 @@ Each edge specification has to be on a new line (for readability).
 - **->** edge with head towards identifier_2
 - **<->** edge with head towards both identifiers
 
+An edge between two vertices can be defined multiple times. These definitions are additive. (see example 4)
+
 Example:
 
 #### 1
@@ -101,4 +103,4 @@ Three edges from a to b, one pointing at a, one pointing at b, one pointing at b
 
 ## Layout
 
-The layout of the graph would be decided by the software used to render the graph, which in theory would be configurabe, if the input format for said program is known.
+The layout of the graph would be decided by the software used to render the graph, which in theory would be configurable, if the input format for said program is known.
